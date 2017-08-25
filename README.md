@@ -57,16 +57,6 @@ how to use this project. You can also read our plans for future feature developm
 If you are using Windows, skip this step.  If you are using Linux or macOS, you will need to
 install PowerShell by following [these instructions](https://github.com/PowerShell/PowerShell#get-powershell).
 
-If you are using macOS you will need to download the latest version of OpenSSL. The easiest way to get this is from
-[Homebrew](http://brew.sh/). After installing Homebrew execute the following commands:
-
-```
-  brew update
-  brew install openssl
-  mkdir -p /usr/local/lib
-  ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
-  ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
-```
 ### 2. On Windows, install the .NET 4.5.1 Targeting Pack
 
 **NOTE: This is only necessary if you don't have Visual Studio installed**

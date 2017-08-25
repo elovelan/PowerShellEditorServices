@@ -4,7 +4,6 @@
   <PropertyGroup>
     <AssemblyTitle>PowerShell Editor Services, Visual Studio Code Extensions</AssemblyTitle>
     <Description>Provides added functionality to PowerShell Editor Services for the Visual Studio Code editor.</Description>
-    <TargetFrameworks>net451;netstandard1.6</TargetFrameworks>
     <AssemblyName>Microsoft.PowerShell.EditorServices.VSCode</AssemblyName>
   </PropertyGroup>
 
@@ -20,7 +19,7 @@
     <ProjectReference Include="..\PowerShellEditorServices.Host\PowerShellEditorServices.Host.csproj" />
   </ItemGroup>
 
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
     <DefineConstants>$(DefineConstants);CoreCLR</DefineConstants>
   </PropertyGroup>
 

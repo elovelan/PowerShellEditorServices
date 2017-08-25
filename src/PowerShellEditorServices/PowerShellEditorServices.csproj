@@ -3,11 +3,8 @@
   <PropertyGroup>
     <AssemblyTitle>PowerShell Editor Services</AssemblyTitle>
     <Description>Provides common PowerShell editor capabilities as a .NET library.</Description>
-    <TargetFrameworks>net451;netstandard1.6</TargetFrameworks>
     <AssemblyName>Microsoft.PowerShell.EditorServices</AssemblyName>
-    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50;portable-net45+win8</PackageTargetFallback>
   </PropertyGroup>
-
   <PropertyGroup>
     <!-- NOTE: -->
     <!-- For PowerShell v5 there are some differences between the APIs released with -->
@@ -20,35 +17,28 @@
     <DefineConstants Condition="'$(PowerShellVersion)' == 'v5r1'">$(DefineConstants);PowerShellv5r1;PowerShellv5</DefineConstants>
     <DefineConstants Condition="'$(PowerShellVersion)' == 'v5r2' Or '$(PowerShellVersion)' == ''">$(DefineConstants);PowerShellv5r2;PowerShellv5</DefineConstants>
   </PropertyGroup>
-
   <!-- Fail the release build if there are missing public API documentation comments -->
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <WarningsAsErrors>1591,1573,1572</WarningsAsErrors>
     <DocumentationFile>bin\$(TargetFramework)\$(Configuration)\Microsoft.PowerShell.EditorServices.xml</DocumentationFile>
   </PropertyGroup>
-
   <Target Name="PowerShellVersionOutput" BeforeTargets="Compile">
     <Message Condition=" '$(TargetFramework)' == 'net451' And '$(PowerShellVersion)' != '' " Text="Target PowerShell Version: $(PowerShellVersion) -- Constants: $(DefineConstants)" Importance="High" />
   </Target>
-
   <ItemGroup Condition=" '$(TargetFramework)' == 'net451' And '$(PowerShellVersion)' == 'v3' ">
     <PackageReference Include="Microsoft.PowerShell.3.ReferenceAssemblies" Version="1.0.0" />
   </ItemGroup>
-
   <ItemGroup Condition=" '$(TargetFramework)' == 'net451' And '$(PowerShellVersion)' == 'v4' ">
     <PackageReference Include="Microsoft.PowerShell.4.ReferenceAssemblies" Version="1.0.0" />
   </ItemGroup>
-
   <ItemGroup Condition=" '$(TargetFramework)' == 'net451' And ('$(PowerShellVersion)' == 'v5r2' Or '$(PowerShellVersion)' == 'v5r1')">
     <PackageReference Include="Microsoft.PowerShell.5.ReferenceAssemblies" Version="1.0.0" />
   </ItemGroup>
-
   <ItemGroup Condition=" '$(PowerShellVersion)' == '' Or '$(PowerShellVersion)' == 'v5r2'">
     <PackageReference Include="Microsoft.PowerShell.SDK">
-      <Version>6.0.0-alpha13</Version>
+      <Version>6.0.0-beta.1</Version>
     </PackageReference>
   </ItemGroup>
-
   <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,11 +48,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
-
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
     <DefineConstants>$(DefineConstants);CoreCLR</DefineConstants>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
   </PropertyGroup>
